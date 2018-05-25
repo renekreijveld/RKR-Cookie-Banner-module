@@ -8,6 +8,6 @@ Publiceer de module bij voorkeur op een module-positie onderin je website templa
 Na installatie van de module moet je de index.php van je template(s) aanpassen om te reageren op de cookie-voorkeur van je bezoeker.
 
 # Installatie instructies:
-* Download het installatiebestand van de [releases pagine](https://github.com/renekreijveld/RKR-Cookie-Banner-module/releases).
+* Download het installatiebestand van de [releases pagina](https://github.com/renekreijveld/RKR-Cookie-Banner-module/releases).
 * Installeer de module via Extensies > Beheren > Installeren.
 * Lees de beschrijving hoe je de website template moet aanpassen om conditioneel zaken te laden als cookies zijn toegestaan.
