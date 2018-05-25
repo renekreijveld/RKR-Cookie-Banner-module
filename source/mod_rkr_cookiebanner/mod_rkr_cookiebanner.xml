@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>RKR Cookie Banner</name>
+	<author>René Kreijveld</author>
+	<creationDate>Jan 2018</creationDate>
+	<copyright>Copyright (C) René Kreijveld Webdevelopment, all rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
+	<authorEmail>email@renekreijveld.nl</authorEmail>
+	<authorUrl>https://www.renekreijveld.nl</authorUrl>
+	<version>1.1</version>
+	<description>
+<![CDATA[
+<h1>RKR Cookie Banner module</h1>
+<p>Met de RKR Cookie Banner module kun je een cookie banner bovenin of onderin je pagina tonen waarmee je toestemming vraagt aan website bezoekers voor het plaatsen van cookies.</p>
+<p>Publiceer de module bij voorkeur op een module-positie onderin je website template.<br/>
+Na installatie van de module moet je de index.php van je template(s) aanpassen om te reageren op de cookie-voorkeur van je bezoeker.</p>
+<p>Plaats bovenin de index.php van je website template(s) de volgende code:</p>
+<pre style="font-size:13px;text-align:left">&lt;?php
+if ( isset( $_COOKIE['rkr_accept_cookies'] ) ) :
+	$allowcookies = $_COOKIE['rkr_accept_cookies'];
+else:
+	$allowcookies = &quot;no&quot;;
+endif;
+?&gt;
+</pre>
+<p>Dit zorgt er voor dat de variabele $allowcookies de waarde 'yes' of 'no' bevat zodat je daarmee bijvoorbeeld kunt bepalen of je Google Analytics laadt.<br/>
+Het conditioneel laden van Google Analytics zou er dan als volgt kunnen uitzien:</p>
+<pre style="font-size:13px;text-align:left">&lt;?php if ( $allowcookies == &quot;yes&quot; ) : ?&gt;
+&lt;!-- Google Analytics laden --&gt;
+Plaats hier je Google Analytics code.
+&lt;!-- Einde Google Analytics laden --&gt;
+&lt;?php endif; ?&gt;
+</pre>
+<p>&copy; 2018, <a href="https://www.renekreijveld.nl" target="_blank">René Kreijveld Webdevelopment</a>.</p>
+]]>
+	</description>
+	<files>
+		<filename module="mod_rkr_cookiebanner">mod_rkr_cookiebanner.php</filename>
+		<folder>assets</folder>
+		<folder>tmpl</folder>
+		<filename>index.html</filename>
+		<filename>LICENSE.txt</filename>
+		<filename>mod_rkr_cookiebanner.php</filename>
+		<filename>mod_rkr_cookiebanner.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="cbPos"
+					type="radio"
+					default="atbottom"
+					label="Banner positie"
+					class="btn-group btn-group-yesno"
+					description="De positie van de banner op het website.">
+					<option value="attop">Bovenin</option>
+					<option value="atbottom">Onderin</option>
+				</field>
+				<field
+					name="cbText"
+					type="textarea"
+					filter="raw"
+					cols="40"
+					rows="7"
+					default="Deze website maakt gebruik van cookies. Lees ons &lt;a href='#'&gt;privacy statement&lt;/a&gt; voor meer informatie. Gaat u akkoord met het gebruik hiervan?"
+					label="Banner tekst"
+					description="Geef hier de tekst die in de banner moet verschijnen." 
+				/>
+				<field
+					name="cbAccept" 
+					type="text" 
+					default="Ja, ik ga akkoord"
+					label="Akkoordknop tekst"
+					description="De tekst die verschijnt op de akkoordknop."
+				/>
+				<field
+					name="cbDeny" 
+					type="text" 
+					default="Liever niet"
+					label="Annuleerknop tekst"
+					description="De tekst die verschijnt op de annuleerknop."
+				/>
+				<field
+					name="cbRedirect"
+					type="radio"
+					default="n"
+					class="btn-group btn-group-yesno"
+					label="Redirect"
+					description="Redirect naar andere pagina na keuze toestaan of weigeren? Bij keuze redirect:ja moet u hieronder een URL invullen waarnaar geredirect wordt.">
+					<option value="n">Nee</option>
+					<option value="j">Ja</option>
+				</field>
+				<field
+					name="cbRedirectURL" 
+					type="text" 
+					default="/index.php"
+					label="Redirect URL"
+					description="De URL waar naar wordt geredirect nadat bezoeker keuze heeft gemaakt."
+				/>
+				<field
+					name="cbCss"
+					type="radio"
+					default="j"
+					class="btn-group btn-group-yesno"
+					label="CSS laden"
+					description="Module CSS laden? Zorg bij nee dat je zelf de CSS/LESS toevoegt aan de website template.">
+					<option value="j">Ja</option>
+					<option value="n">Nee</option>
+				</field>
+				<field
+					name="cbjQuery"
+					type="radio"
+					default="n"
+					class="btn-group btn-group-yesno"
+					label="jQuery laden"
+					description="jQuery laden voor deze module">
+					<option value="n">Nee</option>
+					<option value="j">Ja</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
