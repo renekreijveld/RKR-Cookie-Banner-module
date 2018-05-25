@@ -107,16 +107,6 @@ Plaats hier je Google Analytics code.
 					<option value="j">Ja</option>
 					<option value="n">Nee</option>
 				</field>
-				<field
-					name="cbjQuery"
-					type="radio"
-					default="n"
-					class="btn-group btn-group-yesno"
-					label="jQuery laden"
-					description="jQuery laden voor deze module">
-					<option value="n">Nee</option>
-					<option value="j">Ja</option>
-				</field>
 			</fieldset>
 		</fields>
 	</config>
