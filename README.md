@@ -13,3 +13,8 @@ Als de bezoeker een keuze maakt voor akkoord of niet, wordt die keuze in een fun
 * Publiceer de module (bij voorkeur) op een modulepositie onderin je website template.
 * Zorg dat je de titel van de module niet toont.
 * Kijk in de module op het tabblad Beschrijving hoe je de website template moet aanpassen om conditioneel zaken te laden als cookies zijn toegestaan.
+
+# Versie geschiedenis
+* 26-05-2018 Code verbeteringen door dGrammatiko (1.2)
+* 24-05-2018 Stabiele versie (1.1)
+* 01-01-2018 Initiele versie (1.0)
