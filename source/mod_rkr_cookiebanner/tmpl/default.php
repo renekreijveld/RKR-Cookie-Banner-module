@@ -45,34 +45,31 @@ if (!isset($_COOKIE['rkr_accept_cookies']))
 		<div style="clear:both;"></div>
 	</div>
 	<script type="text/javascript">
-	document.addEventListener(function () {
-		// Set cookies
-		function SetCookie(c_name, value, expiredays) {
-			var exdate = new Date();
-			exdate.setDate(exdate.getDate() + expiredays);
-			var c_value = value + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
-			document.cookie = c_name + "=" + c_value;
-		}
-		document.getElementById("set-cookie").addEventListener('click', function() {
-			SetCookie('rkr_accept_cookies', 'yes', 365 * 10);
-			var msg = document.getElementById("cookie-message");
-			msg.parentNode.removeChild(msg);
-			<?php if ($params->get('cbRedirect') === "j") { ?>
-			window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
-			<?php } else { ?>
-			window.location.reload();
-			<?php } ?>
-		});
-		document.getElementById("remove-cookie-message").addEventListener('click', function() {
-			SetCookie('rkr_accept_cookies', 'no', 365 * 10);
-			var msg = document.getElementById("cookie-message");
-			msg.parentNode.removeChild(msg);
-			<?php if ($params->get('cbRedirect') === "j") { ?>
-			window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
-			<?php } else { ?>
-			window.location.reload();
-			<?php } ?>
-		});
+	function SetCookie(c_name, value, expiredays) {
+		var exdate = new Date();
+		exdate.setDate(exdate.getDate() + expiredays);
+		var c_value = value + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
+		document.cookie = c_name + "=" + c_value;
+	}
+	document.getElementById("set-cookie").addEventListener('click', function() {
+		SetCookie('rkr_accept_cookies', 'yes', 365 * 10);
+		var msg = document.getElementById("cookie-message");
+		msg.parentNode.removeChild(msg);
+		<?php if ($params->get('cbRedirect') === "j") { ?>
+		window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
+		<?php } else { ?>
+		window.location.reload();
+		<?php } ?>
+	});
+	document.getElementById("remove-cookie-message").addEventListener('click', function() {
+		SetCookie('rkr_accept_cookies', 'no', 365 * 10);
+		var msg = document.getElementById("cookie-message");
+		msg.parentNode.removeChild(msg);
+		<?php if ($params->get('cbRedirect') === "j") { ?>
+		window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
+		<?php } else { ?>
+		window.location.reload();
+		<?php } ?>
 	});
 	</script>
 
