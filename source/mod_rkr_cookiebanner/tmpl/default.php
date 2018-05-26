@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version 1.2 stable
+ * @version 1.2.1 stable
  * @package RKR Cookie Banner
  * @copyright Copyright (C) 2018 René Kreijveld Webdevelopment, All rights reserved.
  * @license http://www.gnu.org/licenses GNU/GPL
@@ -26,51 +26,48 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-if (!isset($_COOKIE['rkr_accept_cookies']))
+$document = JFactory::getDocument();
+if ($params->get('cbCss') == 'j')
 {
-	$document = JFactory::getDocument();
-	if ($params->get('cbCss') == 'j')
-	{
-		$document->addStyleSheet('/modules/mod_rkr_cookiebanner/assets/rkr_cookiebanner.css');
-	}
-	?>
-	<div id="cookie-message" class="rkrCB <?php echo $params->get('cbPos');?>">
-		<div class="rkrCBContent">
-			<?php echo $params->get('cbText');?>
-		</div>
-		<div class="buttons">
-			<a id="set-cookie" class="rkrCBAccept" href="#"><?php echo $params->get('cbAccept');?></a>&nbsp;
-			<a id="remove-cookie-message" class="rkrCBRevoke" href="#"><?php echo $params->get('cbDeny');?></a>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-	<script type="text/javascript">
-	function SetCookie(c_name, value, expiredays) {
-		var exdate = new Date();
-		exdate.setDate(exdate.getDate() + expiredays);
-		var c_value = value + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
-		document.cookie = c_name + "=" + c_value;
-	}
-	document.getElementById("set-cookie").addEventListener('click', function() {
-		SetCookie('rkr_accept_cookies', 'yes', 365 * 10);
-		var msg = document.getElementById("cookie-message");
-		msg.parentNode.removeChild(msg);
-		<?php if ($params->get('cbRedirect') === "j") { ?>
-		window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
-		<?php } else { ?>
-		window.location.reload();
-		<?php } ?>
-	});
-	document.getElementById("remove-cookie-message").addEventListener('click', function() {
-		SetCookie('rkr_accept_cookies', 'no', 365 * 10);
-		var msg = document.getElementById("cookie-message");
-		msg.parentNode.removeChild(msg);
-		<?php if ($params->get('cbRedirect') === "j") { ?>
-		window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
-		<?php } else { ?>
-		window.location.reload();
-		<?php } ?>
-	});
-	</script>
+	$document->addStyleSheet('/modules/mod_rkr_cookiebanner/assets/rkr_cookiebanner.css');
+}
+?>
 
-<?php } ?>
+<div id="cookie-message" class="rkrCB <?php echo $params->get('cbPos');?>">
+	<div class="rkrCBContent">
+		<?php echo $params->get('cbText');?>
+	</div>
+	<div class="buttons">
+		<a id="set-cookie" class="rkrCBAccept" href="#"><?php echo $params->get('cbAccept');?></a>&nbsp;
+		<a id="remove-cookie-message" class="rkrCBRevoke" href="#"><?php echo $params->get('cbDeny');?></a>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<script type="text/javascript">
+function SetCookie(c_name, value, expiredays) {
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate() + expiredays);
+	var c_value = value + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
+	document.cookie = c_name + "=" + c_value;
+}
+document.getElementById("set-cookie").addEventListener('click', function() {
+	SetCookie('rkr_accept_cookies', 'yes', 365 * 10);
+	var msg = document.getElementById("cookie-message");
+	msg.parentNode.removeChild(msg);
+	<?php if ($params->get('cbRedirect') === "j") { ?>
+	window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
+	<?php } else { ?>
+	window.location.reload();
+	<?php } ?>
+});
+document.getElementById("remove-cookie-message").addEventListener('click', function() {
+	SetCookie('rkr_accept_cookies', 'no', 365 * 10);
+	var msg = document.getElementById("cookie-message");
+	msg.parentNode.removeChild(msg);
+	<?php if ($params->get('cbRedirect') === "j") { ?>
+	window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
+	<?php } else { ?>
+	window.location.reload();
+	<?php } ?>
+});
+</script>

@@ -7,7 +7,8 @@
 	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
 	<authorEmail>email@renekreijveld.nl</authorEmail>
 	<authorUrl>https://www.renekreijveld.nl</authorUrl>
-	<version>1.2</version>
+	<version>1.2.1</version>
+
 	<description>
 <![CDATA[
 <h1>RKR Cookie Banner module</h1>
@@ -16,11 +17,7 @@
 Na installatie van de module moet je de index.php van je template(s) aanpassen om te reageren op de cookie-voorkeur van je bezoeker.</p>
 <p>Plaats bovenin de index.php van je website template(s) de volgende code:</p>
 <pre style="font-size:13px;text-align:left">&lt;?php
-if ( isset( $_COOKIE['rkr_accept_cookies'] ) ) :
-	$allowcookies = $_COOKIE['rkr_accept_cookies'];
-else:
-	$allowcookies = &quot;no&quot;;
-endif;
+$allowcookies = JFactory::getApplication()->input->cookie->get('rkr_accept_cookies', 'no');
 ?&gt;
 </pre>
 <p>Dit zorgt er voor dat de variabele $allowcookies de waarde 'yes' of 'no' bevat zodat je daarmee bijvoorbeeld kunt bepalen of je Google Analytics laadt.<br/>
@@ -34,6 +31,7 @@ Plaats hier je Google Analytics code.
 <p>&copy; 2018, <a href="https://www.renekreijveld.nl" target="_blank">René Kreijveld Webdevelopment</a>.</p>
 ]]>
 	</description>
+
 	<files>
 		<filename module="mod_rkr_cookiebanner">mod_rkr_cookiebanner.php</filename>
 		<folder>assets</folder>
@@ -43,6 +41,7 @@ Plaats hier je Google Analytics code.
 		<filename>mod_rkr_cookiebanner.php</filename>
 		<filename>mod_rkr_cookiebanner.xml</filename>
 	</files>
+
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
@@ -110,4 +109,5 @@ Plaats hier je Google Analytics code.
 			</fieldset>
 		</fields>
 	</config>
+
 </extension>

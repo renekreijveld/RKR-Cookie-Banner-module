@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version 1.2 stable
+ * @version 1.2.1 stable
  * @package RKR Cookie Banner
  * @copyright Copyright (C) 2018 René Kreijveld Webdevelopment, All rights reserved.
  * @license http://www.gnu.org/licenses GNU/GPL
@@ -26,4 +26,4 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-require JModuleHelper::getLayoutPath('mod_rkr_cookiebanner', 'default');
+if (!isset($_COOKIE['rkr_accept_cookies'])) require JModuleHelper::getLayoutPath('mod_rkr_cookiebanner', 'default');
