@@ -31,11 +31,6 @@ if (!isset($_COOKIE['rkr_accept_cookies']))
 	{
 		$document->addStyleSheet('/modules/mod_rkr_cookiebanner/assets/rkr_cookiebanner.css');
 	}
-	if ($params->get('cbjQuery') == 'j')
-	{
-		$document->addScript(JURI::root(true).'/modules/mod_rkr_cookiebanner/assets/jquery.min.js');
-	}
-	
 	?>
 	<div id="cookie-message" class="rkrCB <?php echo $params->get('cbPos');?>">
 		<div class="rkrCBContent">
@@ -48,7 +43,7 @@ if (!isset($_COOKIE['rkr_accept_cookies']))
 		<div style="clear:both;"></div>
 	</div>
 	<script type="text/javascript">
-	jQuery(document).ready(function ($) {
+	document.addEventListener(function () {
 		// Set cookies
 		function SetCookie(c_name, value, expiredays) {
 			var exdate = new Date();
@@ -56,19 +51,21 @@ if (!isset($_COOKIE['rkr_accept_cookies']))
 			var c_value = value + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
 			document.cookie = c_name + "=" + c_value;
 		}
-		$("#set-cookie").click(function() {
+		document.getElementById("set-cookie").addEventListener('click', function() {
 			SetCookie('rkr_accept_cookies', 'yes', 365 * 10);
-			$("#cookie-message").remove();
-			<?php if ($params->get('cbRedirect') == "j") { ?>
+			var msg = document.getElementById("cookie-message");
+			msg.parentNode.removeChild(msg);
+			<?php if ($params->get('cbRedirect') === "j") { ?>
 			window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
 			<?php } else { ?>
 			window.location.reload();
 			<?php } ?>
 		});
-		$("#remove-cookie-message").click(function() {
+		document.getElementById("remove-cookie-message").addEventListener('click', function() {
 			SetCookie('rkr_accept_cookies', 'no', 365 * 10);
-			$("#cookie-message").remove();
-			<?php if ($params->get('cbRedirect') == "j") { ?>
+			var msg = document.getElementById("cookie-message");
+			msg.parentNode.removeChild(msg);
+			<?php if ($params->get('cbRedirect') === "j") { ?>
 			window.location = "<?php echo $params->get('cbRedirectURL'); ?>";
 			<?php } else { ?>
 			window.location.reload();
