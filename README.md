@@ -14,9 +14,11 @@ Als de bezoeker een keuze maakt voor akkoord of niet, wordt die keuze in een fun
 * Installeer de module via Extensies > Beheren > Installeren.
 * Publiceer de module (bij voorkeur) op een modulepositie onderin je website template.
 * Zorg dat je de titel van de module niet toont.
+* Gebruik je caching? Stel Joomla dan in op Conservatief cachen (Algemene instellingen, tabblad Systeem) en stel de module in op Niet cachen (Module instellingen, tabblad Geavanceerd).
 * Kijk in de module op het tabblad Beschrijving hoe je de website template moet aanpassen om conditioneel zaken te laden als cookies zijn toegestaan.
 
 # Versie geschiedenis
+* 28-05-2018 Advanced module opties toegevoegd (caching) (1.2.2)
 * 26-05-2018 Javascript bug fix, code verbeteringen en CSS aanpassing (1.2.1)
 * 26-05-2018 Code verbeteringen door dGrammatiko (1.2)
 * 24-05-2018 Stabiele versie (1.1)

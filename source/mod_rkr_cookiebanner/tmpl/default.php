@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version 1.2.1 stable
+ * @version 1.2.2 stable
  * @package RKR Cookie Banner
  * @copyright Copyright (C) 2018 René Kreijveld Webdevelopment, All rights reserved.
  * @license http://www.gnu.org/licenses GNU/GPL
